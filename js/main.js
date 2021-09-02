@@ -2,7 +2,7 @@ const displayBook = document.getElementById('display-book-container');
 const errorMessage = document.getElementById('error');
 
 // Load books data
-const bookNumber = document.getElementById('book-numbers');
+const searchResult = document.getElementById('book-numbers');
 const loadBooks = () => {
     // search input
     const searchField = document.getElementById('search-input');   
@@ -31,7 +31,7 @@ const displayBooks = books =>{
 
     displayBook.innerHTML = '';
     // founded search results
-    bookNumber.innerText = `Books Found ${bookList.length}`;
+    searchResult.innerText = `Total Search Result Found = ${bookList.length}`;
 
     // forEACH
     bookList.forEach(book => {
