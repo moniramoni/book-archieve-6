@@ -25,7 +25,7 @@ const displayBooks = books =>{
     // console.log(bookList);
 
     if (bookList.length === 0) {
-        errorMessage.innerHTML = `<p>error!! not found</p>`
+        errorMessage.innerHTML = `<p> SORRY!!! Not Found. Please write a valid keyword...</p>`
     }
     // console.log(bookList);
 
