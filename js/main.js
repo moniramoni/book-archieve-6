@@ -25,7 +25,7 @@ const displayBooks = books =>{
     // console.log(bookList);
 
     if (bookList.length === 0) {
-        errorMessage.innerHTML = `<p> SORRY!!! Not Found. Please write a valid keyword...</p>`
+        errorMessage.innerHTML = `<p class="text-danger"> SORRY!!! Not Found. Please write a valid keyword...</p>`
     }
     // console.log(bookList);
 
