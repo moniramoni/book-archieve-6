@@ -1,4 +1,8 @@
+const displayBook = document.getElementById('display-book-container');
+const errorMessage = document.getElementById('error');
+
 // Load books data
+const bookNumber = document.getElementById('book-numbers');
 const loadBooks = () => {
     // search input
     const searchField = document.getElementById('search-input');   
@@ -9,24 +13,30 @@ const loadBooks = () => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
     .then(res => res.json())
-    .then(data => displayBooks(data.docs))
+    .then(data => displayBooks(data))
 
 }
 
-loadBooks()
+// loadBooks()
 
 // Display books data 
 const displayBooks = books =>{
-    console.log(books);
-    const displayBook = document.getElementById('display-book-container');
+    const bookList = books.docs;
+    // console.log(bookList);
+
+    if (bookList.length === 0) {
+        errorMessage.innerHTML = `<p>error!! not found</p>`
+    }
+    // console.log(bookList);
+
+    displayBook.innerHTML = '';
     // founded search results
-    const searchResultFound = document.getElementById('founded-search-result');
-    // searchResultFound.innerText = `Total Search results found = ${numFound}`
+    bookNumber.innerText = `Books Found ${bookList.length}`;
 
     // forEACH
-    books.forEach(book => {
-        console.log(book);
-
+    bookList.forEach(book => {
+        // console.log(book);
+        errorMessage.innerHTML= '';
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -38,9 +48,10 @@ const displayBooks = books =>{
                 <p class="card-text fst-italic fs-6"><strong class="fst-italic fs-6">Publisher:</strong> ${book.publisher[0]}</p>
                 <p class="card-text fst-italic fs-6"><strong class="fst-italic fs-6">1st Publish Year:</strong> ${book.first_publish_year?book.first_publish_year: 'Unknown Year'}</p>
             </div>
-        </div>
+         </div>
         `
         displayBook.appendChild(div);
+
     }); 
 }
 
